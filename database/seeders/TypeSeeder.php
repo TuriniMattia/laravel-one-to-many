@@ -16,12 +16,20 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         //
+        $types = Type::all();
+
+        $ids = [];
+        foreach ($types as $type) {
+            $ids[] = $type->id;
+        }
+
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
             $type = new Type();
             $name = $faker->sentence(10);
             $type->name = $name;
             $type->slug = Str::slug($name);
+
             $type->save();
         }
     }

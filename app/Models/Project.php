@@ -14,4 +14,9 @@ class Project extends Model
         'github_link',
         'slug',
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }

@@ -14,7 +14,10 @@
                     <th>ID</th>
                     <th>Nome Progetto</th>
                     <th>Link al Github</th>
-                    <th>slug</th>
+                    <th>Tipo di progetto</th>
+                    
+                    <th>Slug</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +26,8 @@
                     <td>{{$project->id}}</td>
                     <td><a href="{{ route('admin.projects.show', $project)}}">{{$project->project_name}}</a></td>
                     <td>{{$project->github_link}}</td>
+                    <td>{{$project->type ? $project->type->name : ''}}</td>
+                    
                     <td>{{$project->slug}}</td>
                 </tr>
                 @endforeach
