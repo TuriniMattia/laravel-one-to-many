@@ -14,9 +14,10 @@
                     <th>ID</th>
                     <th>Nome Progetto</th>
                     <th>Link al Github</th>
-                    <th>Tipo di progetto</th>
-                    
+                    {{-- <th>Tipo di progetto</th> --}}
                     <th>Slug</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
                     
                 </tr>
             </thead>
@@ -26,9 +27,19 @@
                     <td>{{$project->id}}</td>
                     <td><a href="{{ route('admin.projects.show', $project)}}">{{$project->project_name}}</a></td>
                     <td>{{$project->github_link}}</td>
-                    <td>{{$project->type ? $project->type->name : ''}}</td>
-                    
+                    {{-- <td>{{$project->type ? $project->type->name : ''}}</td> --}}
                     <td>{{$project->slug}}</td>
+                    <td>
+                        <a class="btn btn-success" href="{{ route ('admin.projects.edit', $project )}}">Modifica</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('admin.projects.destroy', $project)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                                                    
+                            <button class="btn btn-link link-danger">Elimina</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
